@@ -1,0 +1,16 @@
+PODS:
+  - Cordux (0.1.7)
+
+DEPENDENCIES:
+  - Cordux (from `..`)
+
+EXTERNAL SOURCES:
+  Cordux:
+    :path: ".."
+
+SPEC CHECKSUMS:
+  Cordux: 9c9c485f0aa845c8c54679f31ccaa3c58a9fb56e
+
+PODFILE CHECKSUM: 284a10d3aecab71ef0d599dc2c45c053852d04a7
+
+COCOAPODS: 1.0.1
