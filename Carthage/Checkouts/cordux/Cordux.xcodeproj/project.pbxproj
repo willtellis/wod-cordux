@@ -1,0 +1,782 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D90D54DB1DDF8B5100056AEE /* NavigationControllerMetaCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90D54DA1DDF8B5100056AEE /* NavigationControllerMetaCoordinator.swift */; };
+		D90D54DC1DDF8B5100056AEE /* NavigationControllerMetaCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90D54DA1DDF8B5100056AEE /* NavigationControllerMetaCoordinator.swift */; };
+		D91C93591DD1249700DC29EB /* SimpleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C93581DD1249700DC29EB /* SimpleCoordinator.swift */; };
+		D91D099D1D4FA03500608359 /* Cordux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91D09941D4FA03500608359 /* Cordux.framework */; };
+		D91D09A21D4FA03500608359 /* Cordux_tvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91D09A11D4FA03500608359 /* Cordux_tvOSTests.swift */; };
+		D91D09A41D4FA03500608359 /* Cordux-tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = D91D09961D4FA03500608359 /* Cordux-tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D91D09AB1D4FA04D00608359 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D04031D4A8F4400CED281 /* Store.swift */; };
+		D91D09AC1D4FA04D00608359 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D04051D4A8FD900CED281 /* Reducer.swift */; };
+		D91D09AD1D4FA04D00608359 /* Subscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D03F31D4A8E5500CED281 /* Subscriptions.swift */; };
+		D91D09AE1D4FA04D00608359 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D03F21D4A8E5500CED281 /* Coordinator.swift */; };
+		D91D09AF1D4FA04D00608359 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D03FD1D4A8EBE00CED281 /* SceneCoordinator.swift */; };
+		D91D09B01D4FA04D00608359 /* TabBarControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D03FF1D4A8EE900CED281 /* TabBarControllerCoordinator.swift */; };
+		D91D09B11D4FA04D00608359 /* NavigationControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D04011D4A8F0200CED281 /* NavigationControllerCoordinator.swift */; };
+		D91D09B21D4FA04D00608359 /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D03F41D4A8E5500CED281 /* Routing.swift */; };
+		D91D09B31D4FA04D00608359 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D03F51D4A8E5500CED281 /* Context.swift */; };
+		D91D09B41D4FA04D00608359 /* ViewControllerLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D03F61D4A8E5500CED281 /* ViewControllerLifecycle.swift */; };
+		D93D03DA1D4A8E2300CED281 /* Cordux.h in Headers */ = {isa = PBXBuildFile; fileRef = D93D03D91D4A8E2300CED281 /* Cordux.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D93D03E11D4A8E2300CED281 /* Cordux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93D03D61D4A8E2300CED281 /* Cordux.framework */; };
+		D93D03F71D4A8E5500CED281 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D03F21D4A8E5500CED281 /* Coordinator.swift */; };
+		D93D03F81D4A8E5500CED281 /* Subscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D03F31D4A8E5500CED281 /* Subscriptions.swift */; };
+		D93D03F91D4A8E5500CED281 /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D03F41D4A8E5500CED281 /* Routing.swift */; };
+		D93D03FA1D4A8E5500CED281 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D03F51D4A8E5500CED281 /* Context.swift */; };
+		D93D03FB1D4A8E5500CED281 /* ViewControllerLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D03F61D4A8E5500CED281 /* ViewControllerLifecycle.swift */; };
+		D93D03FE1D4A8EBE00CED281 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D03FD1D4A8EBE00CED281 /* SceneCoordinator.swift */; };
+		D93D04001D4A8EE900CED281 /* TabBarControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D03FF1D4A8EE900CED281 /* TabBarControllerCoordinator.swift */; };
+		D93D04021D4A8F0200CED281 /* NavigationControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D04011D4A8F0200CED281 /* NavigationControllerCoordinator.swift */; };
+		D93D04041D4A8F4400CED281 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D04031D4A8F4400CED281 /* Store.swift */; };
+		D93D04061D4A8FD900CED281 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93D04051D4A8FD900CED281 /* Reducer.swift */; };
+		D973EC821E0D7DE1009C204E /* NavigationControllerMetaCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D973EC811E0D7DE1009C204E /* NavigationControllerMetaCoordinatorTests.swift */; };
+		D973EC851E0D8045009C204E /* SimpleCoordinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D973EC831E0D8043009C204E /* SimpleCoordinators.swift */; };
+		D973EC861E0D8046009C204E /* SimpleCoordinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D973EC831E0D8043009C204E /* SimpleCoordinators.swift */; };
+		D9B557841DCA7DF8006224A7 /* PresentingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B557831DCA7DF8006224A7 /* PresentingCoordinator.swift */; };
+		D9B557851DCA7DF8006224A7 /* PresentingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B557831DCA7DF8006224A7 /* PresentingCoordinator.swift */; };
+		D9B557871DCA8020006224A7 /* Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B557861DCA8020006224A7 /* Scenes.swift */; };
+		D9B557881DCA8020006224A7 /* Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B557861DCA8020006224A7 /* Scenes.swift */; };
+		D9D7D60C1D6B81EE00EAFEE7 /* SubscriptionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7D60B1D6B81EE00EAFEE7 /* SubscriptionsTest.swift */; };
+		D9D7D60D1D6B81F100EAFEE7 /* SubscriptionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7D60B1D6B81EE00EAFEE7 /* SubscriptionsTest.swift */; };
+		D9D7D60F1D6B82AA00EAFEE7 /* SimpleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7D60E1D6B82AA00EAFEE7 /* SimpleState.swift */; };
+		D9D7D6101D6B82AA00EAFEE7 /* SimpleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7D60E1D6B82AA00EAFEE7 /* SimpleState.swift */; };
+		D9D7D6141D6B977100EAFEE7 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7D6111D6B976500EAFEE7 /* Logging.swift */; };
+		D9D7D6151D6B977100EAFEE7 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7D6111D6B976500EAFEE7 /* Logging.swift */; };
+		D9D7D6171D6B9A2100EAFEE7 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7D6161D6B9A2100EAFEE7 /* Middleware.swift */; };
+		D9D7D6181D6B9A2100EAFEE7 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7D6161D6B9A2100EAFEE7 /* Middleware.swift */; };
+		D9D7D61A1D6B9BDE00EAFEE7 /* TypeHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7D6191D6B9BDE00EAFEE7 /* TypeHelpers.swift */; };
+		D9D7D61B1D6B9BDE00EAFEE7 /* TypeHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7D6191D6B9BDE00EAFEE7 /* TypeHelpers.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D91D099E1D4FA03500608359 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D93D03CD1D4A8E2300CED281 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D91D09931D4FA03500608359;
+			remoteInfo = "Cordux-tvOS";
+		};
+		D93D03E21D4A8E2300CED281 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D93D03CD1D4A8E2300CED281 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D93D03D51D4A8E2300CED281;
+			remoteInfo = Cordux;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D90D54DA1DDF8B5100056AEE /* NavigationControllerMetaCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerMetaCoordinator.swift; sourceTree = "<group>"; };
+		D91C93581DD1249700DC29EB /* SimpleCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCoordinator.swift; sourceTree = "<group>"; };
+		D91D09941D4FA03500608359 /* Cordux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cordux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D91D09961D4FA03500608359 /* Cordux-tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cordux-tvOS.h"; sourceTree = "<group>"; };
+		D91D09971D4FA03500608359 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D91D099C1D4FA03500608359 /* Cordux-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cordux-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D91D09A11D4FA03500608359 /* Cordux_tvOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cordux_tvOSTests.swift; sourceTree = "<group>"; };
+		D91D09A31D4FA03500608359 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D93D03D61D4A8E2300CED281 /* Cordux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cordux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D93D03D91D4A8E2300CED281 /* Cordux.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cordux.h; sourceTree = "<group>"; };
+		D93D03DB1D4A8E2300CED281 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D93D03E01D4A8E2300CED281 /* Cordux-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cordux-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D93D03E71D4A8E2300CED281 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D93D03F21D4A8E5500CED281 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		D93D03F31D4A8E5500CED281 /* Subscriptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriptions.swift; sourceTree = "<group>"; };
+		D93D03F41D4A8E5500CED281 /* Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
+		D93D03F51D4A8E5500CED281 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		D93D03F61D4A8E5500CED281 /* ViewControllerLifecycle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerLifecycle.swift; sourceTree = "<group>"; };
+		D93D03FD1D4A8EBE00CED281 /* SceneCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
+		D93D03FF1D4A8EE900CED281 /* TabBarControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerCoordinator.swift; sourceTree = "<group>"; };
+		D93D04011D4A8F0200CED281 /* NavigationControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerCoordinator.swift; sourceTree = "<group>"; };
+		D93D04031D4A8F4400CED281 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		D93D04051D4A8FD900CED281 /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
+		D973EC811E0D7DE1009C204E /* NavigationControllerMetaCoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerMetaCoordinatorTests.swift; sourceTree = "<group>"; };
+		D973EC831E0D8043009C204E /* SimpleCoordinators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCoordinators.swift; sourceTree = "<group>"; };
+		D9B557831DCA7DF8006224A7 /* PresentingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentingCoordinator.swift; sourceTree = "<group>"; };
+		D9B557861DCA8020006224A7 /* Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenes.swift; sourceTree = "<group>"; };
+		D9D7D60B1D6B81EE00EAFEE7 /* SubscriptionsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionsTest.swift; sourceTree = "<group>"; };
+		D9D7D60E1D6B82AA00EAFEE7 /* SimpleState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleState.swift; sourceTree = "<group>"; };
+		D9D7D6111D6B976500EAFEE7 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		D9D7D6161D6B9A2100EAFEE7 /* Middleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
+		D9D7D6191D6B9BDE00EAFEE7 /* TypeHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeHelpers.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D91D09901D4FA03500608359 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D91D09991D4FA03500608359 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D91D099D1D4FA03500608359 /* Cordux.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D93D03D21D4A8E2300CED281 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D93D03DD1D4A8E2300CED281 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D93D03E11D4A8E2300CED281 /* Cordux.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D91D09951D4FA03500608359 /* Cordux-tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				D91D09961D4FA03500608359 /* Cordux-tvOS.h */,
+				D91D09971D4FA03500608359 /* Info.plist */,
+			);
+			path = "Cordux-tvOS";
+			sourceTree = "<group>";
+		};
+		D91D09A01D4FA03500608359 /* Cordux-tvOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				D91D09A11D4FA03500608359 /* Cordux_tvOSTests.swift */,
+				D91D09A31D4FA03500608359 /* Info.plist */,
+			);
+			path = "Cordux-tvOSTests";
+			sourceTree = "<group>";
+		};
+		D93D03CC1D4A8E2300CED281 = {
+			isa = PBXGroup;
+			children = (
+				D93D03D81D4A8E2300CED281 /* Cordux */,
+				D93D03E41D4A8E2300CED281 /* CorduxTests */,
+				D91D09951D4FA03500608359 /* Cordux-tvOS */,
+				D91D09A01D4FA03500608359 /* Cordux-tvOSTests */,
+				D93D03D71D4A8E2300CED281 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D93D03D71D4A8E2300CED281 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D93D03D61D4A8E2300CED281 /* Cordux.framework */,
+				D93D03E01D4A8E2300CED281 /* Cordux-iOSTests.xctest */,
+				D91D09941D4FA03500608359 /* Cordux.framework */,
+				D91D099C1D4FA03500608359 /* Cordux-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D93D03D81D4A8E2300CED281 /* Cordux */ = {
+			isa = PBXGroup;
+			children = (
+				D93D03F11D4A8E5500CED281 /* Sources */,
+				D93D03D91D4A8E2300CED281 /* Cordux.h */,
+				D93D03DB1D4A8E2300CED281 /* Info.plist */,
+			);
+			path = Cordux;
+			sourceTree = "<group>";
+		};
+		D93D03E41D4A8E2300CED281 /* CorduxTests */ = {
+			isa = PBXGroup;
+			children = (
+				D9D7D60E1D6B82AA00EAFEE7 /* SimpleState.swift */,
+				D973EC831E0D8043009C204E /* SimpleCoordinators.swift */,
+				D9D7D60B1D6B81EE00EAFEE7 /* SubscriptionsTest.swift */,
+				D93D03E71D4A8E2300CED281 /* Info.plist */,
+				D973EC811E0D7DE1009C204E /* NavigationControllerMetaCoordinatorTests.swift */,
+			);
+			path = CorduxTests;
+			sourceTree = "<group>";
+		};
+		D93D03F11D4A8E5500CED281 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D93D04031D4A8F4400CED281 /* Store.swift */,
+				D93D04051D4A8FD900CED281 /* Reducer.swift */,
+				D9D7D6161D6B9A2100EAFEE7 /* Middleware.swift */,
+				D93D03F31D4A8E5500CED281 /* Subscriptions.swift */,
+				D93D03FC1D4A8E5D00CED281 /* Coordinators */,
+				D93D03F41D4A8E5500CED281 /* Routing.swift */,
+				D93D03F51D4A8E5500CED281 /* Context.swift */,
+				D93D03F61D4A8E5500CED281 /* ViewControllerLifecycle.swift */,
+				D9D7D6111D6B976500EAFEE7 /* Logging.swift */,
+				D9D7D6191D6B9BDE00EAFEE7 /* TypeHelpers.swift */,
+			);
+			path = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		D93D03FC1D4A8E5D00CED281 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				D93D03F21D4A8E5500CED281 /* Coordinator.swift */,
+				D91C93581DD1249700DC29EB /* SimpleCoordinator.swift */,
+				D93D03FD1D4A8EBE00CED281 /* SceneCoordinator.swift */,
+				D93D03FF1D4A8EE900CED281 /* TabBarControllerCoordinator.swift */,
+				D93D04011D4A8F0200CED281 /* NavigationControllerCoordinator.swift */,
+				D90D54DA1DDF8B5100056AEE /* NavigationControllerMetaCoordinator.swift */,
+				D9B557831DCA7DF8006224A7 /* PresentingCoordinator.swift */,
+				D9B557861DCA8020006224A7 /* Scenes.swift */,
+			);
+			name = Coordinators;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D91D09911D4FA03500608359 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D91D09A41D4FA03500608359 /* Cordux-tvOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D93D03D31D4A8E2300CED281 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D93D03DA1D4A8E2300CED281 /* Cordux.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D91D09931D4FA03500608359 /* Cordux-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D91D09A91D4FA03500608359 /* Build configuration list for PBXNativeTarget "Cordux-tvOS" */;
+			buildPhases = (
+				D91D098F1D4FA03500608359 /* Sources */,
+				D91D09901D4FA03500608359 /* Frameworks */,
+				D91D09911D4FA03500608359 /* Headers */,
+				D91D09921D4FA03500608359 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Cordux-tvOS";
+			productName = "Cordux-tvOS";
+			productReference = D91D09941D4FA03500608359 /* Cordux.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D91D099B1D4FA03500608359 /* Cordux-tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D91D09AA1D4FA03500608359 /* Build configuration list for PBXNativeTarget "Cordux-tvOSTests" */;
+			buildPhases = (
+				D91D09981D4FA03500608359 /* Sources */,
+				D91D09991D4FA03500608359 /* Frameworks */,
+				D91D099A1D4FA03500608359 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D91D099F1D4FA03500608359 /* PBXTargetDependency */,
+			);
+			name = "Cordux-tvOSTests";
+			productName = "Cordux-tvOSTests";
+			productReference = D91D099C1D4FA03500608359 /* Cordux-tvOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D93D03D51D4A8E2300CED281 /* Cordux-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D93D03EA1D4A8E2300CED281 /* Build configuration list for PBXNativeTarget "Cordux-iOS" */;
+			buildPhases = (
+				D93D03D11D4A8E2300CED281 /* Sources */,
+				D93D03D21D4A8E2300CED281 /* Frameworks */,
+				D93D03D31D4A8E2300CED281 /* Headers */,
+				D93D03D41D4A8E2300CED281 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Cordux-iOS";
+			productName = Cordux;
+			productReference = D93D03D61D4A8E2300CED281 /* Cordux.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D93D03DF1D4A8E2300CED281 /* Cordux-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D93D03ED1D4A8E2300CED281 /* Build configuration list for PBXNativeTarget "Cordux-iOSTests" */;
+			buildPhases = (
+				D93D03DC1D4A8E2300CED281 /* Sources */,
+				D93D03DD1D4A8E2300CED281 /* Frameworks */,
+				D93D03DE1D4A8E2300CED281 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D93D03E31D4A8E2300CED281 /* PBXTargetDependency */,
+			);
+			name = "Cordux-iOSTests";
+			productName = CorduxTests;
+			productReference = D93D03E01D4A8E2300CED281 /* Cordux-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D93D03CD1D4A8E2300CED281 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = WillowTree;
+				TargetAttributes = {
+					D91D09931D4FA03500608359 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 7UMFPW78PV;
+						DevelopmentTeamName = "WillowTree Apps, Inc.";
+						ProvisioningStyle = Automatic;
+					};
+					D91D099B1D4FA03500608359 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 7UMFPW78PV;
+						DevelopmentTeamName = "WillowTree Apps, Inc.";
+						ProvisioningStyle = Automatic;
+					};
+					D93D03D51D4A8E2300CED281 = {
+						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
+					};
+					D93D03DF1D4A8E2300CED281 = {
+						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
+					};
+				};
+			};
+			buildConfigurationList = D93D03D01D4A8E2300CED281 /* Build configuration list for PBXProject "Cordux" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D93D03CC1D4A8E2300CED281;
+			productRefGroup = D93D03D71D4A8E2300CED281 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D93D03D51D4A8E2300CED281 /* Cordux-iOS */,
+				D93D03DF1D4A8E2300CED281 /* Cordux-iOSTests */,
+				D91D09931D4FA03500608359 /* Cordux-tvOS */,
+				D91D099B1D4FA03500608359 /* Cordux-tvOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D91D09921D4FA03500608359 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D91D099A1D4FA03500608359 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D93D03D41D4A8E2300CED281 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D93D03DE1D4A8E2300CED281 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D91D098F1D4FA03500608359 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9B557881DCA8020006224A7 /* Scenes.swift in Sources */,
+				D91D09B21D4FA04D00608359 /* Routing.swift in Sources */,
+				D91D09AE1D4FA04D00608359 /* Coordinator.swift in Sources */,
+				D90D54DC1DDF8B5100056AEE /* NavigationControllerMetaCoordinator.swift in Sources */,
+				D91D09AF1D4FA04D00608359 /* SceneCoordinator.swift in Sources */,
+				D9B557851DCA7DF8006224A7 /* PresentingCoordinator.swift in Sources */,
+				D9D7D6141D6B977100EAFEE7 /* Logging.swift in Sources */,
+				D91D09B01D4FA04D00608359 /* TabBarControllerCoordinator.swift in Sources */,
+				D91D09B11D4FA04D00608359 /* NavigationControllerCoordinator.swift in Sources */,
+				D91D09AD1D4FA04D00608359 /* Subscriptions.swift in Sources */,
+				D91D09B31D4FA04D00608359 /* Context.swift in Sources */,
+				D91D09AC1D4FA04D00608359 /* Reducer.swift in Sources */,
+				D9D7D61B1D6B9BDE00EAFEE7 /* TypeHelpers.swift in Sources */,
+				D9D7D6181D6B9A2100EAFEE7 /* Middleware.swift in Sources */,
+				D91D09AB1D4FA04D00608359 /* Store.swift in Sources */,
+				D91D09B41D4FA04D00608359 /* ViewControllerLifecycle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D91D09981D4FA03500608359 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D973EC861E0D8046009C204E /* SimpleCoordinators.swift in Sources */,
+				D9D7D60D1D6B81F100EAFEE7 /* SubscriptionsTest.swift in Sources */,
+				D91D09A21D4FA03500608359 /* Cordux_tvOSTests.swift in Sources */,
+				D9D7D6101D6B82AA00EAFEE7 /* SimpleState.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D93D03D11D4A8E2300CED281 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D91C93591DD1249700DC29EB /* SimpleCoordinator.swift in Sources */,
+				D9B557871DCA8020006224A7 /* Scenes.swift in Sources */,
+				D93D04021D4A8F0200CED281 /* NavigationControllerCoordinator.swift in Sources */,
+				D93D03F81D4A8E5500CED281 /* Subscriptions.swift in Sources */,
+				D93D03F71D4A8E5500CED281 /* Coordinator.swift in Sources */,
+				D90D54DB1DDF8B5100056AEE /* NavigationControllerMetaCoordinator.swift in Sources */,
+				D9B557841DCA7DF8006224A7 /* PresentingCoordinator.swift in Sources */,
+				D9D7D6151D6B977100EAFEE7 /* Logging.swift in Sources */,
+				D93D04041D4A8F4400CED281 /* Store.swift in Sources */,
+				D93D04001D4A8EE900CED281 /* TabBarControllerCoordinator.swift in Sources */,
+				D93D03FA1D4A8E5500CED281 /* Context.swift in Sources */,
+				D93D03FE1D4A8EBE00CED281 /* SceneCoordinator.swift in Sources */,
+				D93D03F91D4A8E5500CED281 /* Routing.swift in Sources */,
+				D9D7D61A1D6B9BDE00EAFEE7 /* TypeHelpers.swift in Sources */,
+				D9D7D6171D6B9A2100EAFEE7 /* Middleware.swift in Sources */,
+				D93D04061D4A8FD900CED281 /* Reducer.swift in Sources */,
+				D93D03FB1D4A8E5500CED281 /* ViewControllerLifecycle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D93D03DC1D4A8E2300CED281 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D973EC851E0D8045009C204E /* SimpleCoordinators.swift in Sources */,
+				D9D7D60F1D6B82AA00EAFEE7 /* SimpleState.swift in Sources */,
+				D973EC821E0D7DE1009C204E /* NavigationControllerMetaCoordinatorTests.swift in Sources */,
+				D9D7D60C1D6B81EE00EAFEE7 /* SubscriptionsTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D91D099F1D4FA03500608359 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D91D09931D4FA03500608359 /* Cordux-tvOS */;
+			targetProxy = D91D099E1D4FA03500608359 /* PBXContainerItemProxy */;
+		};
+		D93D03E31D4A8E2300CED281 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D93D03D51D4A8E2300CED281 /* Cordux-iOS */;
+			targetProxy = D93D03E21D4A8E2300CED281 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D91D09A51D4FA03500608359 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Cordux-tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hbonordic.Cordux-tvOS";
+				PRODUCT_NAME = Cordux;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		D91D09A61D4FA03500608359 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Cordux-tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hbonordic.Cordux-tvOS";
+				PRODUCT_NAME = Cordux;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		D91D09A71D4FA03500608359 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = "Cordux-tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hbonordic.Cordux-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		D91D09A81D4FA03500608359 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = "Cordux-tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hbonordic.Cordux-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		D93D03E81D4A8E2300CED281 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D93D03E91D4A8E2300CED281 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D93D03EB1D4A8E2300CED281 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Cordux/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.willowtreeapps.Cordux;
+				PRODUCT_NAME = Cordux;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D93D03EC1D4A8E2300CED281 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Cordux/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.willowtreeapps.Cordux;
+				PRODUCT_NAME = Cordux;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		D93D03EE1D4A8E2300CED281 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = CorduxTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.willowtreeapps.CorduxTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D93D03EF1D4A8E2300CED281 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = CorduxTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.willowtreeapps.CorduxTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D91D09A91D4FA03500608359 /* Build configuration list for PBXNativeTarget "Cordux-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D91D09A51D4FA03500608359 /* Debug */,
+				D91D09A61D4FA03500608359 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D91D09AA1D4FA03500608359 /* Build configuration list for PBXNativeTarget "Cordux-tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D91D09A71D4FA03500608359 /* Debug */,
+				D91D09A81D4FA03500608359 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D93D03D01D4A8E2300CED281 /* Build configuration list for PBXProject "Cordux" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D93D03E81D4A8E2300CED281 /* Debug */,
+				D93D03E91D4A8E2300CED281 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D93D03EA1D4A8E2300CED281 /* Build configuration list for PBXNativeTarget "Cordux-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D93D03EB1D4A8E2300CED281 /* Debug */,
+				D93D03EC1D4A8E2300CED281 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D93D03ED1D4A8E2300CED281 /* Build configuration list for PBXNativeTarget "Cordux-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D93D03EE1D4A8E2300CED281 /* Debug */,
+				D93D03EF1D4A8E2300CED281 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D93D03CD1D4A8E2300CED281 /* Project object */;
+}
