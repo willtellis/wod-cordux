@@ -13,12 +13,11 @@ final class AppCoordinator: SceneCoordinator {
     enum RouteSegment: String, RouteConvertible {
         case wods
     }
-    var scenePrefix: String?
     
     let store: Store
     let container: UIViewController
     
-    var currentScene: AnyCoordinator?
+    var currentScene: Scene?
     
     var rootViewController: UIViewController {
         return container
@@ -31,46 +30,46 @@ final class AppCoordinator: SceneCoordinator {
     
     func start(route: Route?) {
         store.rootCoordinator = self
+        // TODO: WTE - Something like store.subscribe(self, RouteSubscription.init) to get ability to change out presented coordinator when route changes
     }
     
-    func changeScene(_ route: Route) {
-        guard let segment = RouteSegment(rawValue: route.first ?? "") else {
-            return
-        }
-        
-        let old = currentScene?.rootViewController
-        let coordinator: AnyCoordinator
+    func coordinatorForTag(_ tag: String) -> (coordinator: AnyCoordinator, started: Bool)? {
+        guard let segment = RouteSegment(rawValue: tag) else { return nil }
         switch segment {
         case .wods:
-            coordinator = WodsCoordinator(store: store) // TODO: WTE - Create WODListCoordinator
+            return (WodsCoordinator(store: store), false)
         }
-        
-        coordinator.start(route: sceneRoute(route))
-        currentScene = coordinator
-        scenePrefix = segment.rawValue
+    }
+    
+    func presentCoordinator(_ coordinator: AnyCoordinator?, completionHandler: @escaping () -> Void) {
         
         let container = self.container
-        let new = coordinator.rootViewController
+        let old = container.childViewControllers.first
+        let new = coordinator?.rootViewController
         
         old?.willMove(toParentViewController: nil)
-        container.addChildViewController(new)
-        container.view.addSubview(new.view)
         
-        var constraints: [NSLayoutConstraint] = []
-        constraints.append(new.view.leftAnchor.constraint(equalTo: container.view.leftAnchor))
-        constraints.append(new.view.rightAnchor.constraint(equalTo: container.view.rightAnchor))
-        constraints.append(new.view.topAnchor.constraint(equalTo: container.view.topAnchor))
-        constraints.append(new.view.bottomAnchor.constraint(equalTo: container.view.bottomAnchor))
-        NSLayoutConstraint.activate(constraints)
+        if let new = new {
+            container.addChildViewController(new)
+            container.view.addSubview(new.view)
+            var constraints: [NSLayoutConstraint] = []
+            constraints.append(new.view.leftAnchor.constraint(equalTo: container.view.leftAnchor))
+            constraints.append(new.view.rightAnchor.constraint(equalTo: container.view.rightAnchor))
+            constraints.append(new.view.topAnchor.constraint(equalTo: container.view.topAnchor))
+            constraints.append(new.view.bottomAnchor.constraint(equalTo: container.view.bottomAnchor))
+            NSLayoutConstraint.activate(constraints)
+        }
         
-        new.view.alpha = 0
-        UIView.animate(withDuration: 0.3, animations: {
+        new?.view.alpha = 0
+        UIView.animate(withDuration: 1.0, animations: {
             old?.view.alpha = 0
-            new.view.alpha = 1
+            new?.view.alpha = 1
         }, completion: { _ in
             old?.view.removeFromSuperview()
             old?.removeFromParentViewController()
-            new.didMove(toParentViewController: container)
+            new?.didMove(toParentViewController: container)
         })
+        completionHandler()
     }
+    
 }
