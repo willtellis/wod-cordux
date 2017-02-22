@@ -22,8 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIViewController.swizzleLifecycleDelegatingViewControllerMethods()
         
-        var state = AppState()
-        state.route = AppCoordinator.RouteSegment.wods.route()
+        // TODO: WTE - Set initial state with route
+        let state = AppState.test
+//        state.route = AppCoordinator.RouteSegment.wods.route()
         let store = Store(initialState: state, reducer: AppReducer(), middlewares: [/*ActionLogger()*/])
         
         coordinator = AppCoordinator(store: store, container: mainController)
