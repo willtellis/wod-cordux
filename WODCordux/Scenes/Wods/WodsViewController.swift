@@ -8,13 +8,28 @@
 
 import UIKit
 
+struct WodTableViewCellViewModel {
+    var title: String = ""
+    var content: String = ""
+}
+
+struct WodsViewModel {
+    var wodTableViewCellViewModels: [WodTableViewCellViewModel] = []
+}
+
 protocol WodsHandler {
     func performAction()
 }
 
 final class WodsViewController: UIViewController {
     
+    var handler: WodsHandler?
+    
     func inject(handler: WodsHandler) {
-        // TODO: WTE -
+        self.handler = handler
+    }
+    
+    func render(_ viewModel: WodsViewModel) {
+        // TODO WTE
     }
 }

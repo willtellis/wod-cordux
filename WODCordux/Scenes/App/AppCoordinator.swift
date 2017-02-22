@@ -68,8 +68,8 @@ final class AppCoordinator: SceneCoordinator {
             old?.view.removeFromSuperview()
             old?.removeFromParentViewController()
             new?.didMove(toParentViewController: container)
+            completionHandler()
         })
-        completionHandler()
     }
     
 }
