@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,19 +14,61 @@
         <scene sceneID="lsZ-WJ-fyh">
             <objects>
                 <viewController storyboardIdentifier="Wods" id="UAW-Tr-7rD" customClass="WodsViewController" customModule="WODCordux" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pJX-XC-GRI"/>
-                        <viewControllerLayoutGuide type="bottom" id="Tpg-4w-LqG"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="X6r-4L-rDo">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="111" sectionHeaderHeight="18" sectionFooterHeight="18" id="wBj-9m-laR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WodsTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="WodsTableViewCell" rowHeight="111" id="irN-9W-MMO" customClass="WodsTableViewCell" customModule="WODCordux" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="56" width="375" height="111"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="irN-9W-MMO" id="xCX-qw-mrk">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="p1m-aX-n6U">
+                                            <rect key="frame" x="8" y="8" width="359" height="94"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJX-FG-8R4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Content" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzr-us-LSz">
+                                                    <rect key="frame" x="0.0" y="20.5" width="359" height="73.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="p1m-aX-n6U" secondAttribute="bottom" id="ETy-d5-LxC"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="p1m-aX-n6U" secondAttribute="trailing" id="TQu-MW-0WN"/>
+                                        <constraint firstItem="p1m-aX-n6U" firstAttribute="leading" secondItem="xCX-qw-mrk" secondAttribute="leadingMargin" id="gyi-bs-zKx"/>
+                                        <constraint firstItem="p1m-aX-n6U" firstAttribute="top" secondItem="xCX-qw-mrk" secondAttribute="topMargin" id="s7x-hS-muM"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="content" destination="hzr-us-LSz" id="EXD-Ud-Okz"/>
+                                    <outlet property="title" destination="dJX-FG-8R4" id="zMu-bI-LRH"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="UAW-Tr-7rD" id="Nsb-BE-bWJ"/>
+                            <outlet property="delegate" destination="UAW-Tr-7rD" id="1aU-ke-wyz"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="wBj-9m-laR" id="7Pg-d3-BDw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iJJ-fJ-51d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="154" y="161"/>
+            <point key="canvasLocation" x="152.80000000000001" y="160.56971514242881"/>
         </scene>
     </scenes>
 </document>
