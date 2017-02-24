@@ -10,10 +10,12 @@ import Foundation
 import Cordux
 
 final class WodsCoordinator: NavigationControllerCoordinator {
+    enum RouteSegment: String, RouteConvertible {
+        case list
+    }
     
     var store: Store
     let navigationController: UINavigationController
-    var rootViewController: UIViewController { return navigationController }
 
     let storyboard = UIStoryboard(name: "Wods", bundle: nil)
     let wodsViewController: WodsViewController
@@ -27,10 +29,21 @@ final class WodsCoordinator: NavigationControllerCoordinator {
     
     func start(route: Route?) {
         wodsViewController.inject(handler: self)
+        wodsViewController.corduxContext = Context(routeSegment: RouteSegment.list, lifecycleDelegate: self)
+
+        let segments = parse(route: route)
+        guard !segments.isEmpty else {
+            store.setRoute(.push(RouteSegment.list))
+            return
+        }
+    }
+    
+    func parse(route: Route?) -> [RouteSegment] {
+        return route?.flatMap({ RouteSegment.init(rawValue: $0) }) ?? []
     }
     
     func updateRoute(_ route: Route, completionHandler: @escaping () -> Void) {
-        
+        completionHandler()
     }
 
 }
