@@ -43,7 +43,11 @@ final class WodsCoordinator: NavigationControllerCoordinator {
     }
     
     func updateRoute(_ route: Route, completionHandler: @escaping () -> Void) {
-        completionHandler()
+        defer { completionHandler() }
+        guard self.route != route else {
+            return
+        }
+        // TODO: WTE - Present WodDetailsCoordinator
     }
 
 }
@@ -51,7 +55,7 @@ final class WodsCoordinator: NavigationControllerCoordinator {
 extension WodsCoordinator: ViewControllerLifecycleDelegate {
     @objc func viewDidLoad(viewController: UIViewController) {
         if viewController === wodsViewController {
-            store.subscribe(wodsViewController, WodsViewModel.make())
+            store.subscribe(wodsViewController, WodsViewModel.makeInit())
         }
     }
     
@@ -67,7 +71,8 @@ extension WodsCoordinator: ViewControllerLifecycleDelegate {
 extension WodsViewController: Renderer {}
 
 extension WodsViewModel {
-    static func make() -> (AppState) -> WodsViewModel {
+    
+    static func makeInit() -> (AppState) -> WodsViewModel {
         return { (state) -> WodsViewModel in
             guard case .initialized(let browsingState) = state.initialization else {
                 return WodsViewModel()
@@ -82,7 +87,8 @@ extension WodsViewModel {
 
 
 extension WodsCoordinator: WodsHandler {
-    func performAction() {
-        // TODO: WTE -
+    func presentWodDetails(for wodIndex: Int) {
+        store.route(.push(wodIndex))
     }
+    
 }

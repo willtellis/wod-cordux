@@ -18,7 +18,7 @@ struct WodsViewModel {
 }
 
 protocol WodsHandler {
-    func performAction()
+    func presentWodDetails(for wodIndex: Int)
 }
 
 final class WodsViewController: UIViewController {
@@ -58,6 +58,13 @@ extension WodsViewController: UITableViewDataSource {
         let cellViewModel = viewModel.wodTableViewCellViewModels[indexPath.row]
         cell.render(cellViewModel)
         return cell
+    }
+}
+
+extension WodsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        handler?.presentWodDetails(for: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Yz3-2i-DMq">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Wod Details View Controller-->
+        <scene sceneID="PfW-Iq-A3C">
+            <objects>
+                <viewController storyboardIdentifier="WodDetails" id="Yz3-2i-DMq" customClass="WodDetailsViewController" customModule="WODCordux" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MQK-Fx-ZHm"/>
+                        <viewControllerLayoutGuide type="bottom" id="iUW-NF-4tv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TcP-aX-gPN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9M7-6w-ELT">
+                                <rect key="frame" x="166.5" y="323.5" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9M7-6w-ELT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MQK-Fx-ZHm" secondAttribute="bottom" id="3Gi-bQ-wf1"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="9M7-6w-ELT" secondAttribute="trailing" id="ICc-xV-atG"/>
+                            <constraint firstItem="9M7-6w-ELT" firstAttribute="centerX" secondItem="TcP-aX-gPN" secondAttribute="centerX" id="hvc-aW-sSg"/>
+                            <constraint firstItem="iUW-NF-4tv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9M7-6w-ELT" secondAttribute="bottom" id="oa3-AE-faZ"/>
+                            <constraint firstItem="9M7-6w-ELT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TcP-aX-gPN" secondAttribute="leadingMargin" id="tgV-jl-5k5"/>
+                            <constraint firstItem="9M7-6w-ELT" firstAttribute="centerY" secondItem="TcP-aX-gPN" secondAttribute="centerY" id="zsg-U4-peJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="content" destination="9M7-6w-ELT" id="fNs-JK-ZPT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xsA-He-Ria" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="265" y="177"/>
+        </scene>
+    </scenes>
+</document>
