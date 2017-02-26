@@ -20,6 +20,11 @@
 		78FE0F1F1E573C6800A07B60 /* WodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE0F1E1E573C6800A07B60 /* WodsViewController.swift */; };
 		78FE0F441E5DF3D700A07B60 /* AppState+TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE0F431E5DF3D700A07B60 /* AppState+TestExtensions.swift */; };
 		78FE0F471E5F55FA00A07B60 /* ClassNameIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE0F461E5F55FA00A07B60 /* ClassNameIdentifiable.swift */; };
+		78FE0F4A1E60BB1300A07B60 /* WodDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE0F491E60BB1300A07B60 /* WodDetailsCoordinator.swift */; };
+		78FE0F4C1E6102B600A07B60 /* WodDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE0F4B1E6102B600A07B60 /* WodDetailsViewController.swift */; };
+		78FE0F4E1E6265A600A07B60 /* IntRouteConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE0F4D1E6265A600A07B60 /* IntRouteConvertible.swift */; };
+		78FE0F501E626DB000A07B60 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE0F4F1E626DB000A07B60 /* CollectionExtensions.swift */; };
+		78FE0F541E6289F900A07B60 /* WodDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78FE0F531E6289F900A07B60 /* WodDetails.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +43,11 @@
 		78FE0F1E1E573C6800A07B60 /* WodsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WodsViewController.swift; path = Scenes/Wods/WodsViewController.swift; sourceTree = "<group>"; };
 		78FE0F431E5DF3D700A07B60 /* AppState+TestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AppState+TestExtensions.swift"; path = "Test/AppState+TestExtensions.swift"; sourceTree = "<group>"; };
 		78FE0F461E5F55FA00A07B60 /* ClassNameIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassNameIdentifiable.swift; path = Extensions/ClassNameIdentifiable.swift; sourceTree = "<group>"; };
+		78FE0F491E60BB1300A07B60 /* WodDetailsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WodDetailsCoordinator.swift; path = Scenes/WodDetails/WodDetailsCoordinator.swift; sourceTree = "<group>"; };
+		78FE0F4B1E6102B600A07B60 /* WodDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WodDetailsViewController.swift; path = Scenes/WodDetails/WodDetailsViewController.swift; sourceTree = "<group>"; };
+		78FE0F4D1E6265A600A07B60 /* IntRouteConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntRouteConvertible.swift; path = Extensions/IntRouteConvertible.swift; sourceTree = "<group>"; };
+		78FE0F4F1E626DB000A07B60 /* CollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensions.swift; path = Extensions/CollectionExtensions.swift; sourceTree = "<group>"; };
+		78FE0F531E6289F900A07B60 /* WodDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = WodDetails.storyboard; path = Scenes/WodDetails/WodDetails.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +107,7 @@
 			children = (
 				78FE0F111E56384D00A07B60 /* App */,
 				78FE0F191E57349100A07B60 /* Wods */,
+				78FE0F481E60BAE100A07B60 /* WodDetails */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -133,8 +144,20 @@
 			isa = PBXGroup;
 			children = (
 				78FE0F461E5F55FA00A07B60 /* ClassNameIdentifiable.swift */,
+				78FE0F4D1E6265A600A07B60 /* IntRouteConvertible.swift */,
+				78FE0F4F1E626DB000A07B60 /* CollectionExtensions.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		78FE0F481E60BAE100A07B60 /* WodDetails */ = {
+			isa = PBXGroup;
+			children = (
+				78FE0F491E60BB1300A07B60 /* WodDetailsCoordinator.swift */,
+				78FE0F4B1E6102B600A07B60 /* WodDetailsViewController.swift */,
+				78FE0F531E6289F900A07B60 /* WodDetails.storyboard */,
+			);
+			name = WodDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +225,7 @@
 				78FE0F021E548E4400A07B60 /* LaunchScreen.storyboard in Resources */,
 				78FE0EFF1E548E4400A07B60 /* Assets.xcassets in Resources */,
 				78FE0F1D1E573BF500A07B60 /* Wods.storyboard in Resources */,
+				78FE0F541E6289F900A07B60 /* WodDetails.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,13 +254,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				78FE0F441E5DF3D700A07B60 /* AppState+TestExtensions.swift in Sources */,
+				78FE0F501E626DB000A07B60 /* CollectionExtensions.swift in Sources */,
+				78FE0F4E1E6265A600A07B60 /* IntRouteConvertible.swift in Sources */,
 				78FE0F181E5639CF00A07B60 /* AppCoordinator.swift in Sources */,
 				78FE0F161E56396F00A07B60 /* MainViewController.swift in Sources */,
 				78FE0F0F1E56329300A07B60 /* AppState.swift in Sources */,
+				78FE0F4C1E6102B600A07B60 /* WodDetailsViewController.swift in Sources */,
 				78FE0F1B1E5734B600A07B60 /* WodsCoordinator.swift in Sources */,
 				78FE0F471E5F55FA00A07B60 /* ClassNameIdentifiable.swift in Sources */,
 				78FE0EF81E548E4400A07B60 /* AppDelegate.swift in Sources */,
 				78FE0F1F1E573C6800A07B60 /* WodsViewController.swift in Sources */,
+				78FE0F4A1E60BB1300A07B60 /* WodDetailsCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
