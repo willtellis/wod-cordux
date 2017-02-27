@@ -37,7 +37,7 @@ final class AppCoordinator: SceneCoordinator {
         guard let segment = RouteSegment(rawValue: tag) else { return nil }
         switch segment {
         case .wods:
-            return (WodsCoordinator(store: store), false)
+            return (WodsNavigationCoordinator(store: store), false)
         }
     }
     
