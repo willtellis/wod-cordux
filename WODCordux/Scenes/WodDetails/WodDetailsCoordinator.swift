@@ -10,71 +10,57 @@ import Foundation
 import Cordux
 
 final class WodDetailsCoordinator: Coordinator {
-    
+
+    enum RouteSegment: String, RouteConvertible {
+        case details
+    }
+
     var store: Store
     let wodDetailsViewController: WodDetailsViewController
     var rootViewController: UIViewController { return wodDetailsViewController }
     
     let storyboard = UIStoryboard(name: "WodDetails", bundle: nil)
     
-    init(store: Store) {
+    var wodRouteId: WodRouteId?
+    public var route: Route { return RouteSegment.details.route() + (wodRouteId?.route() ?? []) }
+    
+    init(store: Store, wodRouteId: WodRouteId? = nil) {
         self.store = store
+        self.wodRouteId = wodRouteId
         
-        wodDetailsViewController = storyboard.instantiateViewController(withIdentifier: "Wods") as! WodDetailsViewController
+        wodDetailsViewController = storyboard.instantiateViewController(withIdentifier: "WodDetails") as! WodDetailsViewController
     }
     
     func start(route: Route?) {
-        guard let route = route, let wodID = route.first else {
-            return
-        }
         wodDetailsViewController.inject(handler: self)
-        wodDetailsViewController.corduxContext = Context(routeSegment: wodID, lifecycleDelegate: self)
-        
-        store.setRoute(.push(wodID))
     }
     
-    public var route: Route { return rootViewController.corduxContext?.routeSegment?.route() ?? [] }
     
     func prepareForRoute(_ route: Route?, completionHandler: @escaping () -> Void) {
         completionHandler()
     }
     
     func setRoute(_ newRoute: Route?, completionHandler: @escaping () -> Void) {
-        defer { completionHandler() }
-        guard let newRoute = newRoute, newRoute != route, let wodIndex = Int(route.first ?? "") else { return }
-        store.unsubscribe(wodDetailsViewController)
-        store.subscribe(wodDetailsViewController, WodDetailsViewModel.makeInit(with: wodIndex))
+        completionHandler()
     }
-    
-    
     
 }
 
 extension WodDetailsCoordinator: ViewControllerLifecycleDelegate {
     @objc func viewDidLoad(viewController: UIViewController) {
-        if viewController === wodDetailsViewController, let wodIndex = Int(route.first ?? "") {
-            store.subscribe(wodDetailsViewController, WodDetailsViewModel.makeInit(with: wodIndex))
+        if viewController === wodDetailsViewController, let wodRouteId = wodRouteId {
+            store.subscribe(wodDetailsViewController, WodDetailsViewModel.makeInit(with: wodRouteId))
         }
     }
     
-    @objc func didMove(toParentViewController parentViewController: UIViewController?, viewController: UIViewController) {
-        guard parentViewController == nil else {
-            return
-        }
-        
-        guard let routeSegment = route.first else {
-            return
-        }
-        store.setRoute(.pop(routeSegment))
-    }
 }
 
 extension WodDetailsViewController: Renderer {}
 
 extension WodDetailsViewModel {
-    static func makeInit(with wodIndex: Int) -> (AppState) -> WodDetailsViewModel {
+    static func makeInit(with wodRouteId: WodRouteId) -> (AppState) -> WodDetailsViewModel {
         return { (state) -> WodDetailsViewModel in
-            guard case .initialized(let browsingState) = state.initialization, let wod = browsingState.wods[safe: wodIndex] else {
+            guard case .initialized(let browsingState) = state.initialization, let wod = browsingState.wods[safe: wodRouteId] else {
                 return WodDetailsViewModel()
             }
             

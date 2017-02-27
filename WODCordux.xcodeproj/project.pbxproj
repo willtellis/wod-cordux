@@ -25,6 +25,7 @@
 		78FE0F4E1E6265A600A07B60 /* IntRouteConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE0F4D1E6265A600A07B60 /* IntRouteConvertible.swift */; };
 		78FE0F501E626DB000A07B60 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE0F4F1E626DB000A07B60 /* CollectionExtensions.swift */; };
 		78FE0F541E6289F900A07B60 /* WodDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78FE0F531E6289F900A07B60 /* WodDetails.storyboard */; };
+		78FE0F561E63BA0700A07B60 /* WodsNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE0F551E63BA0700A07B60 /* WodsNavigationCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		78FE0F4D1E6265A600A07B60 /* IntRouteConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntRouteConvertible.swift; path = Extensions/IntRouteConvertible.swift; sourceTree = "<group>"; };
 		78FE0F4F1E626DB000A07B60 /* CollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensions.swift; path = Extensions/CollectionExtensions.swift; sourceTree = "<group>"; };
 		78FE0F531E6289F900A07B60 /* WodDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = WodDetails.storyboard; path = Scenes/WodDetails/WodDetails.storyboard; sourceTree = "<group>"; };
+		78FE0F551E63BA0700A07B60 /* WodsNavigationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WodsNavigationCoordinator.swift; path = Scenes/Wods/WodsNavigationCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		78FE0F191E57349100A07B60 /* Wods */ = {
 			isa = PBXGroup;
 			children = (
+				78FE0F551E63BA0700A07B60 /* WodsNavigationCoordinator.swift */,
 				78FE0F1A1E5734B600A07B60 /* WodsCoordinator.swift */,
 				78FE0F1C1E573BF500A07B60 /* Wods.storyboard */,
 				78FE0F1E1E573C6800A07B60 /* WodsViewController.swift */,
@@ -239,6 +242,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Cordux.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Cordux.framework.dSYM",
 			);
 			outputPaths = (
 			);
@@ -254,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78FE0F441E5DF3D700A07B60 /* AppState+TestExtensions.swift in Sources */,
+				78FE0F561E63BA0700A07B60 /* WodsNavigationCoordinator.swift in Sources */,
 				78FE0F501E626DB000A07B60 /* CollectionExtensions.swift in Sources */,
 				78FE0F4E1E6265A600A07B60 /* IntRouteConvertible.swift in Sources */,
 				78FE0F181E5639CF00A07B60 /* AppCoordinator.swift in Sources */,

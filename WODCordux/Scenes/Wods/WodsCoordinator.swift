@@ -9,47 +9,34 @@
 import Foundation
 import Cordux
 
-final class WodsCoordinator: NavigationControllerCoordinator {
+final class WodsCoordinator: Coordinator {
     enum RouteSegment: String, RouteConvertible {
         case list
     }
     
     var store: Store
-    let navigationController: UINavigationController
+    var rootViewController: UIViewController { return wodsViewController }
+    var route: Route { return RouteSegment.list.route() }
 
     let storyboard = UIStoryboard(name: "Wods", bundle: nil)
     let wodsViewController: WodsViewController
     
     init(store: Store) {
         self.store = store
-        
         wodsViewController = storyboard.instantiateViewController(withIdentifier: "Wods") as! WodsViewController
-        navigationController = UINavigationController(rootViewController: wodsViewController)
     }
     
     func start(route: Route?) {
         wodsViewController.inject(handler: self)
-        wodsViewController.corduxContext = Context(routeSegment: RouteSegment.list, lifecycleDelegate: self)
-
-        let segments = parse(route: route)
-        guard !segments.isEmpty else {
-            store.setRoute(.push(RouteSegment.list))
-            return
-        }
     }
     
-    func parse(route: Route?) -> [RouteSegment] {
-        return route?.flatMap({ RouteSegment.init(rawValue: $0) }) ?? []
+    func prepareForRoute(_ route: Route?, completionHandler: @escaping () -> Void) {
+        completionHandler()
     }
     
-    func updateRoute(_ route: Route, completionHandler: @escaping () -> Void) {
-        defer { completionHandler() }
-        guard self.route != route else {
-            return
-        }
-        // TODO: WTE - Present WodDetailsCoordinator
+    func setRoute(_ route: Route?, completionHandler: @escaping () -> Void) {
+        completionHandler()
     }
-
 }
 
 extension WodsCoordinator: ViewControllerLifecycleDelegate {
@@ -59,13 +46,6 @@ extension WodsCoordinator: ViewControllerLifecycleDelegate {
         }
     }
     
-    @objc func didMove(toParentViewController parentViewController: UIViewController?, viewController: UIViewController) {
-        guard parentViewController == nil else {
-            return
-        }
-        
-        popRoute(viewController)
-    }
 }
 
 extension WodsViewController: Renderer {}
@@ -85,10 +65,9 @@ extension WodsViewModel {
 }
 
 
-
 extension WodsCoordinator: WodsHandler {
     func presentWodDetails(for wodIndex: Int) {
-        store.route(.push(wodIndex))
+        store.route(.push(WodDetailsCoordinator.RouteSegment.details.route() + wodIndex))
     }
     
 }
