@@ -19,6 +19,7 @@ struct WodsViewModel {
 
 protocol WodsHandler {
     func presentWodDetails(for wodIndex: Int)
+    func presentNewWod()
 }
 
 final class WodsViewController: UIViewController {

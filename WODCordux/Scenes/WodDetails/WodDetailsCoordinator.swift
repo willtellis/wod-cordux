@@ -9,10 +9,42 @@
 import Foundation
 import Cordux
 
+typealias WodId = Int
+
 final class WodDetailsCoordinator: Coordinator {
 
-    enum RouteSegment: String, RouteConvertible {
-        case details
+    enum RouteSegment: RouteConvertible {
+        static let baseSegment = "details"
+        static let newSegment = "new"
+        case new
+        case existing(WodRouteId)
+        func route() -> Route {
+            switch self {
+            case .new: return RouteSegment.baseSegment.route() + RouteSegment.newSegment.route()
+            case .existing(let wodRouteId): return RouteSegment.baseSegment.route() + wodRouteId.route()
+            }
+        }
+        static func trim(fromRoute route: Route) -> (routeSegment: RouteSegment, trimmedRoute: Route)? {
+            var trimmedRoute = route
+            guard let firstSegment = trimmedRoute.first, firstSegment.route() == baseSegment.route() else { return nil }
+
+            trimmedRoute = Route(trimmedRoute.dropFirst())
+            guard let secondSegment = trimmedRoute.first else { return nil }
+
+            if let wodRouteId = WodRouteId(secondSegment) {
+                return (routeSegment: RouteSegment.existing(wodRouteId), trimmedRoute: Route(trimmedRoute.dropFirst()))
+            } else if secondSegment.route() == newSegment.route() {
+                return (routeSegment: RouteSegment.new, trimmedRoute: Route(trimmedRoute.dropFirst()))
+            } else {
+                return nil
+            }
+        }
+    }
+
+    enum Mode {
+        case new
+        case view(WodRouteId)
+        case edit(WodRouteId)
     }
 
     var store: Store
@@ -21,12 +53,17 @@ final class WodDetailsCoordinator: Coordinator {
     
     let storyboard = UIStoryboard(name: "WodDetails", bundle: nil)
     
-    var wodRouteId: WodRouteId?
-    public var route: Route { return RouteSegment.details.route() + (wodRouteId?.route() ?? []) }
+    var mode: Mode
+    public var route: Route {
+        switch mode {
+        case .view(let wodRouteId), .edit(let wodRouteId): return RouteSegment.existing(wodRouteId).route()
+        case .new: return RouteSegment.new.route()
+        }
+    }
     
-    init(store: Store, wodRouteId: WodRouteId? = nil) {
+    init(store: Store, mode: Mode) {
         self.store = store
-        self.wodRouteId = wodRouteId
+        self.mode = mode
         
         wodDetailsViewController = storyboard.instantiateViewController(withIdentifier: "WodDetails") as! WodDetailsViewController
     }
@@ -49,8 +86,13 @@ final class WodDetailsCoordinator: Coordinator {
 
 extension WodDetailsCoordinator: ViewControllerLifecycleDelegate {
     @objc func viewWillAppear(_ animated: Bool, viewController: UIViewController) {
-        if viewController === wodDetailsViewController, let wodRouteId = wodRouteId {
-            store.subscribe(wodDetailsViewController, WodDetailsViewModel.makeInit(with: wodRouteId))
+        if viewController === wodDetailsViewController {
+            switch mode {
+            case .view(let wodRouteId), .edit(let wodRouteId):
+                store.subscribe(wodDetailsViewController, WodDetailsViewModel.makeInit(with: wodRouteId))
+            case .new:
+                break
+            }
         }
     }
 

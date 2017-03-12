@@ -31,17 +31,17 @@ final class WodsNavigationCoordinator: NavigationControllerMetaCoordinator {
             coordinators.append(WodsCoordinator(store: store))
             routeTail = Route(routeTail.dropFirst())
         }
-        
-        if let segment = routeTail.first, segment.route() == WodDetailsCoordinator.RouteSegment.details.route() {
-            routeTail = Route(routeTail.dropFirst())
-            if let segment = routeTail.first, let wodRouteId = WodRouteId(segment) {
-                coordinators.append(WodDetailsCoordinator(store: store, wodRouteId: wodRouteId))
-                routeTail = Route(routeTail.dropFirst())
-            } else {
-                coordinators.append(WodDetailsCoordinator(store: store))
-            }
-        }
-        
+
+        if let (routeSegment, trimmedRoute) = WodDetailsCoordinator.RouteSegment.trim(fromRoute: routeTail) {
+            routeTail = trimmedRoute
+            let mode: WodDetailsCoordinator.Mode = {
+                switch routeSegment {
+                case .new: return .new
+                case .existing(let wodRouteId): return .view(wodRouteId)
+                }
+            }()
+            coordinators.append(WodDetailsCoordinator(store: store, mode: mode))
+        }        
         return coordinators
     }
     

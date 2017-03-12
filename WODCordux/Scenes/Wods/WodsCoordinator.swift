@@ -73,7 +73,11 @@ extension WodsViewModel {
 
 extension WodsCoordinator: WodsHandler {
     func presentWodDetails(for wodIndex: Int) {
-        store.route(.push(WodDetailsCoordinator.RouteSegment.details.route() + wodIndex))
+        store.route(.push(WodDetailsCoordinator.RouteSegment.existing(wodIndex)))
     }
     
+    func presentNewWod() {
+        store.route(.push(WodDetailsCoordinator.RouteSegment.new))
+    }
+
 }
