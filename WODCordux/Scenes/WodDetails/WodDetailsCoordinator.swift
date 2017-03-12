@@ -33,6 +33,7 @@ final class WodDetailsCoordinator: Coordinator {
     
     func start(route: Route?) {
         wodDetailsViewController.inject(handler: self)
+        wodDetailsViewController.corduxContext = Context(routeSegment: route, lifecycleDelegate: self)
     }
     
     
@@ -47,12 +48,17 @@ final class WodDetailsCoordinator: Coordinator {
 }
 
 extension WodDetailsCoordinator: ViewControllerLifecycleDelegate {
-    @objc func viewDidLoad(viewController: UIViewController) {
+    @objc func viewWillAppear(_ animated: Bool, viewController: UIViewController) {
         if viewController === wodDetailsViewController, let wodRouteId = wodRouteId {
             store.subscribe(wodDetailsViewController, WodDetailsViewModel.makeInit(with: wodRouteId))
         }
     }
-    
+
+    @objc func viewWillDisappear(_ animated: Bool, viewController: UIViewController) {
+        if viewController === wodDetailsViewController {
+            store.unsubscribe(wodDetailsViewController)
+        }
+    }
 }
 
 extension WodDetailsViewController: Renderer {}

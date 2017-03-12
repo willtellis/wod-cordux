@@ -55,15 +55,7 @@ final class WodsNavigationCoordinator: NavigationControllerMetaCoordinator {
     }
     
     // MARK - ViewControllerLifecycleDelegate
-    
-    @objc func viewDidLoad(viewController: UIViewController) {
-        
-        // Allow store subscriptions to be made by coordinators' viewDidLoad implementations
-        if let coordinator = coordinators.first(where: { viewController === $0.rootViewController }) as? ViewControllerLifecycleDelegate {
-            coordinator.viewDidLoad?(viewController: viewController)
-        }
-    }
-    
+
     @objc func didMove(toParentViewController parentViewController: UIViewController?, viewController: UIViewController) {
         if parentViewController == nil, let coordinator = coordinators.popLast() {
             store.setRoute(.pop(coordinator.route))

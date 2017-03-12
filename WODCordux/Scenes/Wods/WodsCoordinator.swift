@@ -28,6 +28,7 @@ final class WodsCoordinator: Coordinator {
     
     func start(route: Route?) {
         wodsViewController.inject(handler: self)
+        wodsViewController.corduxContext = Context(routeSegment: route, lifecycleDelegate: self)
     }
     
     func prepareForRoute(_ route: Route?, completionHandler: @escaping () -> Void) {
@@ -40,12 +41,17 @@ final class WodsCoordinator: Coordinator {
 }
 
 extension WodsCoordinator: ViewControllerLifecycleDelegate {
-    @objc func viewDidLoad(viewController: UIViewController) {
+    @objc func viewWillAppear(_ animated: Bool, viewController: UIViewController) {
         if viewController === wodsViewController {
             store.subscribe(wodsViewController, WodsViewModel.makeInit())
         }
     }
     
+    @objc func viewWillDisappear(_ animated: Bool, viewController: UIViewController) {
+        if viewController === wodsViewController {
+            store.unsubscribe(wodsViewController)
+        }
+    }
 }
 
 extension WodsViewController: Renderer {}
