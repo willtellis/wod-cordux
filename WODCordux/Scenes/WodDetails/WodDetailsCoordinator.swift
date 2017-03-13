@@ -91,7 +91,7 @@ extension WodDetailsCoordinator: ViewControllerLifecycleDelegate {
             case .view(let wodRouteId), .edit(let wodRouteId):
                 store.subscribe(wodDetailsViewController, WodDetailsViewModel.makeInit(with: wodRouteId))
             case .new:
-                break
+                store.subscribe(wodDetailsViewController, WodDetailsViewModel.makeNewInit())
             }
         }
     }
@@ -112,6 +112,16 @@ extension WodDetailsViewModel {
                 return WodDetailsViewModel()
             }
             
+            return WodDetailsViewModel(name: wod.name, content: wod.content)
+        }
+    }
+
+    static func makeNewInit() -> (AppState) -> WodDetailsViewModel {
+        return { (state) -> WodDetailsViewModel in
+            guard case .initialized(let browsingState) = state.initialization, let wod = browsingState.newWod else {
+                return WodDetailsViewModel()
+            }
+
             return WodDetailsViewModel(name: wod.name, content: wod.content)
         }
     }

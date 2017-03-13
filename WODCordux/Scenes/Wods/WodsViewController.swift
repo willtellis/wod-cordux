@@ -22,6 +22,10 @@ protocol WodsHandler {
     func presentNewWod()
 }
 
+protocol WodsViewActions {
+    func addButtonPressed()
+}
+
 final class WodsViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
@@ -33,6 +37,7 @@ final class WodsViewController: UIViewController {
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
         navigationItem.title = NSLocalizedString("Wods", comment: "")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
     }
         
     func inject(handler: WodsHandler) {
@@ -59,6 +64,12 @@ extension WodsViewController: UITableViewDataSource {
         let cellViewModel = viewModel.wodTableViewCellViewModels[indexPath.row]
         cell.render(cellViewModel)
         return cell
+    }
+}
+
+extension WodsViewController: WodsViewActions {
+    @IBAction func addButtonPressed() {
+        handler?.presentNewWod()
     }
 }
 
