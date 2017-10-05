@@ -7,4 +7,5 @@ framework module Cordux {
 
 module Cordux.Swift {
     header "Cordux-Swift.h"
+    requires objc
 }

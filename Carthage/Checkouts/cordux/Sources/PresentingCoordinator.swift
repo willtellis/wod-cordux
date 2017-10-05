@@ -13,7 +13,7 @@ public protocol AnyPresentingCoordinator {
     func presentStoredPresentable(completionHandler: @escaping () -> Void)
 }
 
-public protocol PresentingCoordinator: Coordinator, AnyPresentingCoordinator {
+public protocol PresentingCoordinator: Coordinator, AnyPresentingCoordinator, ViewControllerLifecycleDelegate {
     var rootCoordinator: AnyCoordinator { get }
     var presented: Scene? { get set }
 
@@ -46,9 +46,36 @@ public extension PresentingCoordinator  {
         return route
     }
 
-    public func prepareForRoute(_ newValue: Route?, completionHandler: @escaping () -> Void) {
+    public func needsToPrepareForRoute(_ newValue: Route?) -> Bool {
         pruneOutOfDatePresented()
 
+        guard let route = newValue else {
+            if presented != nil {
+                return true
+            }
+            return rootCoordinator.needsToPrepareForRoute(nil)
+        }
+
+        let (rootRoute, presentable) = parsePresentableRoute(route)
+        let rootNeedsToPrepare = rootCoordinator.needsToPrepareForRoute(rootRoute)
+
+        guard let presented = presented else {
+            return rootNeedsToPrepare
+        }
+
+        guard
+            let newPresentable = presentable,
+            presented.tag == newPresentable.scene.tag,
+            !newPresentable.route.components.isEmpty
+        else {
+            return true
+        }
+
+        let presentedNeedsToPrepare = presented.coordinator.needsToPrepareForRoute(newPresentable.route)
+        return rootNeedsToPrepare || presentedNeedsToPrepare
+    }
+
+    public func prepareForRoute(_ newValue: Route?, completionHandler: @escaping () -> Void) {
         guard let route = newValue else {
             withGroup(completionHandler) { group in
                 group.enter()
@@ -192,7 +219,9 @@ public extension PresentingCoordinator  {
 
         let coordinator = scene.buildCoordinator()
         coordinator.start(route: route)
-        rootViewController.present(coordinator.rootViewController, animated: true) {
+        let presentedController = coordinator.rootViewController
+        presentedController.addLifecycleDelegate(self)
+        rootViewController.present(presentedController, animated: true) {
             self.presented = Scene(tag: scene.tag, coordinator: coordinator)
             completionHandler()
         }
