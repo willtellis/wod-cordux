@@ -10,6 +10,11 @@ import Foundation
 import Cordux
 
 final class WodsCoordinator: Coordinator {
+
+    func needsToPrepareForRoute(_: Route?) -> Bool {
+        return false
+    }
+    
     enum RouteSegment: String, RouteConvertible {
         case list
     }

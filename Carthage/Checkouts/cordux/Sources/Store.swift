@@ -27,11 +27,18 @@ public final class Store<State : StateType> {
     public let reducer: AnyReducer
     public let middlewares: [AnyMiddleware]
 
-    let routeQueue = DispatchQueue(label: "CorduxRouting", qos: .userInitiated)
-    var routeAction: DispatchWorkItem?
-    let routeLogger: RouteLogger?
-    var lastRoute: Route?
+    /// Isolation queue to protect routingCount
+    private let routeStatusQueue = DispatchQueue(label: "CorduxRoutingStatus")
+    /// The number of routing actions currently in progress
+    private var routingCount = 0
+    /// Serial queue to order routing actions
+    private let routeQueue = DispatchQueue(label: "CorduxRouting", qos: .userInitiated)
+    /// Logger to log routing events
+    private let routeLogger: RouteLogger?
+    /// The last route that has been propagated
+    private var lastRoute: Route?
 
+    /// The root coordinator for the app; used for routing.
     public weak var rootCoordinator: AnyCoordinator? {
         didSet {
             propagateRoute(state.route)
@@ -92,59 +99,95 @@ public final class Store<State : StateType> {
     }
 
     public func dispatch(_ action: Action) {
-        let originalRoute = state.route
-
+        let state = self.state
         middlewares.forEach { $0._before(action: action, state: state) }
-        state = reducer._handleAction(action, state: state) as! State
+        let newState = reducer._handleAction(action, state: state) as! State
+        self.state = newState
 
         #if swift(>=3)
-            middlewares.reversed().forEach { $0._after(action: action, state: state) }
+            middlewares.reversed().forEach { $0._after(action: action, state: newState) }
         #else
-            middlewares.reverse().forEach { $0._after(action: action, state: state) }
+            middlewares.reverse().forEach { $0._after(action: action, state: newState) }
         #endif
-        
-        if originalRoute != state.route {
-            routeLogger?(.reducer(state.route))
+
+        if state.route != newState.route {
+            routeLogger?(.reducer(newState.route))
         }
 
-        subscriptions.forEach { $0.subscriber?._newState($0.transform?(state) ?? state) }
-        propagateRoute(state.route)
+        propagateRoute(newState.route)
+
+        subscriptions = subscriptions.filter { $0.subscriber != nil }
+        subscriptions.forEach { $0.subscriber?._newState($0.transform?(newState) ?? newState) }
     }
 
     /// Propagates the route through the app via the `rootCoordinator`.
     ///
+    /// This method will execute the routing action synchronously if no other routing actions are already in progress.
+    /// If a routing action is already occurring, the route will be performed asynchronously. All actions occur on
+    /// the main thread.
+    ///
     /// - Note: Does not re-propagate identical routes
     /// - Note: If a route is attempted to be propagated while another route is working, it is executed after the
-    ///         original propagation completes. If multiple attempts occur, only the last one is queued and executed.
-    /// - Note: All routing methods must call their completion handlers. This method times out after 3 seconds.
+    ///         original propagation completes. Multiple routes are propagated asynchronously in order.
+    /// - Note: All routing methods must call their completion handlers on the main thread. 
+    ///         This method times out after 3 seconds.
     ///
     /// - Parameter route: The route to propagate
-    func propagateRoute(_ route: Route) {
-        guard route != lastRoute else {
+    private func propagateRoute(_ route: Route) {
+        guard route != lastRoute, let rootCoordinator = rootCoordinator else {
             return
         }
-        let item = DispatchWorkItem {
-            let group = DispatchGroup()
-            group.enter()
-            DispatchQueue.main.async {
-                self.rootCoordinator?.prepareForRoute(route) {
-                    DispatchQueue.main.async {
-                        self.rootCoordinator?.setRoute(route) {
-                            group.leave()
-                        }
-                    }
-                }
-            }
+        lastRoute = route
+
+        func waitForRoutingCompletion(_ group: DispatchGroup) {
             let result = group.wait(timeout: .now() + kRouteTimeoutDuration)
             if case .timedOut = result {
                 alertStuckRouter()
             }
+            self.decrementRoutingCount()
         }
-        routeQueue.async(execute: item)
-        routeAction?.cancel()
-        lastRoute = route
-        routeAction = item
+
+        func _setRoute(_ group: DispatchGroup) {
+            rootCoordinator.setRoute(route) {
+                group.leave()
+            }
+        }
+
+        func setRoute(_ group: DispatchGroup) {
+            guard rootCoordinator.needsToPrepareForRoute(route) else {
+                _setRoute(group)
+                return
+            }
+            rootCoordinator.prepareForRoute(route) {
+                _setRoute(group)
+            }
+        }
+
+        let shouldRouteAsynchronously = isRouting
+        self.incrementRoutingCount()
+
+        if shouldRouteAsynchronously {
+            routeQueue.async {
+                let group = DispatchGroup()
+                group.enter()
+                DispatchQueue.main.async {
+                    setRoute(group)
+                }
+                waitForRoutingCompletion(group)
+            }
+        } else {
+            let group = DispatchGroup()
+            group.enter()
+            routeQueue.async {
+                waitForRoutingCompletion(group)
+            }
+            setRoute(group)
+        }
     }
+
+    private var isRouting: Bool { return routeStatusQueue.sync { self.routingCount > 0 } }
+    private func incrementRoutingCount() { routeStatusQueue.async { self.routingCount += 1 } }
+    private func decrementRoutingCount() { routeStatusQueue.async { self.routingCount -= 1 } }
 
     func isNewSubscriber(_ subscriber: AnyStoreSubscriber) -> Bool {
         #if swift(>=3)
